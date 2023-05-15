@@ -1,0 +1,1479 @@
+[
+    {
+        "id": "51370b72a972e9de",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "137baec196bbf5a1",
+        "type": "google-cloud-credentials",
+        "name": "key"
+    },
+    {
+        "id": "ca995bbfe1692c6b",
+        "type": "template",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": ".gridWrap{\n    right: 0px !important;\n    top: 0px !important;\n    height: 100vh !important;\n    width: 100vw;\n    padding: 4px 0px !important;\n}\n\n.title_text span {\ncolor: transparent !important;\n  background: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%) !important;\n  -webkit-background-clip: text !important;\n  -webkit-text-fill-color: transparent !important;\n      font-size: 39px !important;\n}\n             \n.btn-grad button {\n  background-image: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%) !important;\n  margin: 10px !important;\n  padding: 5px 45px !important;\n  text-align: center !important;\n  text-transform: uppercase !important;\n  transition: 0.5s !important;\n  background-size: 200% auto !important;\n  color: white !important;           \n  box-shadow: 0 0 20px #eee !important;\n  border-radius: 10px !important;\n  display: block !important;\n  }\n\n  .btn-grad>div>div>div>div>div:hover button {\n    background-position: right center !important;\n    color: #fff  !important;\n    text-decoration: none !important;\n    background: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%) !important;\n  }\n    /* .btn-grad:hover>div {\n    background-position: right center !important; \n    color: #fff  !important; \n    text-decoration: none !important;  \n    background: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%) !important;\n  }    */\n   .btn-grad  button:hover {\n    background-position: right center !important; \n    color: #fff  !important;\n    text-decoration: none !important;\n    background: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%) !important;\n  }\n",
+        "output": "str",
+        "x": 300,
+        "y": 40,
+        "wires": [
+            [
+                "8ba3f9560315e880"
+            ]
+        ]
+    },
+    {
+        "id": "e14b6d1dbc62f3dd",
+        "type": "http in",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "url": "/css",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 40,
+        "wires": [
+            [
+                "ca995bbfe1692c6b"
+            ]
+        ]
+    },
+    {
+        "id": "8ba3f9560315e880",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {
+            "content-type": "text/css"
+        },
+        "x": 470,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7cb444b5afc7874a",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 36",
+        "func": "msg.type = msg.payload.type\nmsg.payload = msg.req.query.text\nif (msg.type ==='en-GB-female'){\n    return [msg, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'en-GB-male'){\n    return [null, msg, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'en-US-female') {\n    return [null, null, msg, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'en-US-male') {\n    return [null, null, null, msg, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]\n} \nif (msg.type === 'yue-HK-female') {\n    return [null, null, null, null, msg, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'yue-HK-male') {\n    return [null, null, null, null, null, msg, null, null, null, null, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'fr-FR-female') {\n    return [null, null, null, null, null, null, msg, null, null, null, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'fr-FR-male') {\n    return [null, null, null, null, null, null, null, msg, null, null, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'de-DE-female') {\n    return [null, null, null, null, null, null, null, null, msg, null, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'de-DE-male') {\n    return [null, null, null, null, null, null, null, null, null, msg, null, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'ja-JP-female') {\n    return [null, null, null, null, null, null, null, null, null, null, msg, null, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'ja-JP-male') {\n    return [null, null, null, null, null, null, null, null, null, null, null, msg, null, null, null, null, null, null, null, null]\n}\nif (msg.type === 'pt-PT-female') {\n    return [null, null, null, null, null, null, null, null, null, null, null, null, msg, null, null, null, null, null, null, null]\n}\nif (msg.type === 'pt-PT-male') {\n    return [null, null, null, null, null, null, null, null, null, null, null, null, null, msg, null, null, null, null, null, null]\n}\nif (msg.type === 'es-ES-female') {\n    return [null, null, null, null, null, null, null, null, null, null, null, null, null, null, msg, null, null, null, null, null]\n}\nif (msg.type === 'es-ES-male') {\n    return [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, msg, null, null, null, null]\n}\nif (msg.type === 'tr-TR-female') {\n    return [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, msg, null, null, null]\n}\nif (msg.type === 'tr-TR-male') {\n    return [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, msg, null, null]\n}\nif (msg.type === 'uk-UA-female') {\n    return [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, msg, null]\n}\nelse {\n    msg.payload = 'Select language'\n    return [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, msg]\n}\n",
+        "outputs": 20,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 480,
+        "wires": [
+            [
+                "bdaccfdd066cab37"
+            ],
+            [
+                "fc36cb944febc1f0"
+            ],
+            [
+                "9dca19d8af44bf14"
+            ],
+            [
+                "f9660662132208a9"
+            ],
+            [
+                "74097f365de4be60"
+            ],
+            [
+                "14dd51b51cbaa377"
+            ],
+            [
+                "8cc255b93d2c3608"
+            ],
+            [
+                "846436b05d81dc8c"
+            ],
+            [
+                "2039db05f9184e14"
+            ],
+            [
+                "6fe0dd91af58e8b0"
+            ],
+            [
+                "2a27c89955843775"
+            ],
+            [
+                "4c43049aa0ec7370"
+            ],
+            [
+                "92a41f9d23239062"
+            ],
+            [
+                "7c76d4425dcfc496"
+            ],
+            [
+                "14972bca71ba5858"
+            ],
+            [
+                "4a565de690741ce9"
+            ],
+            [
+                "a5cffdac0cd48370"
+            ],
+            [
+                "43f3f11057975ab2"
+            ],
+            [
+                "2e66054749ad037f"
+            ],
+            [
+                "298a9be2e496a0b7"
+            ]
+        ]
+    },
+    {
+        "id": "07f547cd4ecc1b1c",
+        "type": "http in",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "url": "/textToSpeech",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 480,
+        "wires": [
+            [
+                "7cb444b5afc7874a"
+            ]
+        ]
+    },
+    {
+        "id": "d7c3fa50ec8d2569",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 37",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 120,
+        "wires": [
+            [
+                "2471eb7bdb288bec"
+            ]
+        ]
+    },
+    {
+        "id": "2471eb7bdb288bec",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "702c9d25cd25fa9d",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 54",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9a868c7f7508b1a6",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 38",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 160,
+        "wires": [
+            [
+                "e8804532f5e1a493"
+            ]
+        ]
+    },
+    {
+        "id": "e8804532f5e1a493",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ea1806062e482b12",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 55",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "16c2bf0368f669e7",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 39",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 200,
+        "wires": [
+            [
+                "9bd2a73c036380ed"
+            ]
+        ]
+    },
+    {
+        "id": "9bd2a73c036380ed",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "770ebdfbbbe7e72a",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 56",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5051bff393252dc0",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 40",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 240,
+        "wires": [
+            [
+                "3d214ab2535edb55"
+            ]
+        ]
+    },
+    {
+        "id": "3d214ab2535edb55",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6eed08032ff93e7e",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 57",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "1841920a2da93f2c",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 41",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 280,
+        "wires": [
+            [
+                "64902d71cc8b6cf6"
+            ]
+        ]
+    },
+    {
+        "id": "64902d71cc8b6cf6",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "ce29b97edc0260f7",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 58",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "3119325988f4021e",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 42",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 320,
+        "wires": [
+            [
+                "63f7e4fc86a5e94a"
+            ]
+        ]
+    },
+    {
+        "id": "63f7e4fc86a5e94a",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9d26eabbc8270774",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 59",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "6cd88a29d585f475",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 43",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 360,
+        "wires": [
+            [
+                "f2f25405471d662b"
+            ]
+        ]
+    },
+    {
+        "id": "f2f25405471d662b",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a7aa8755e5ff9ea0",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 60",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3edb81539e222730",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 44",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 400,
+        "wires": [
+            [
+                "fec44a0fee405b8e"
+            ]
+        ]
+    },
+    {
+        "id": "fec44a0fee405b8e",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "0f5f018d5a4c8d19",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 61",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "77fc744d66011670",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 45",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 440,
+        "wires": [
+            [
+                "e56098b9f612221a"
+            ]
+        ]
+    },
+    {
+        "id": "e56098b9f612221a",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ed8d5f8b3308bbff",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 62",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "1d1a83bf390dce64",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 46",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 480,
+        "wires": [
+            [
+                "0e0144321c812fa2"
+            ]
+        ]
+    },
+    {
+        "id": "0e0144321c812fa2",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "32ab3ea5a0541e03",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 63",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "a6c5978566e02f52",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 47",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 520,
+        "wires": [
+            [
+                "f53a780d963f4e99"
+            ]
+        ]
+    },
+    {
+        "id": "f53a780d963f4e99",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "627a97eec27b2553",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 64",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "7554e16bbb18e2e8",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 48",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 560,
+        "wires": [
+            [
+                "625354d46f4747ca"
+            ]
+        ]
+    },
+    {
+        "id": "625354d46f4747ca",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "d15b34c74e52a01f",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 65",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "e821f432783ff94f",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 49",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 600,
+        "wires": [
+            [
+                "7d333423284c2c3b"
+            ]
+        ]
+    },
+    {
+        "id": "7d333423284c2c3b",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "d6b5dcb9906d833a",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 66",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "b7efc17485cc2831",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 50",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 640,
+        "wires": [
+            [
+                "f002c615595bb86f"
+            ]
+        ]
+    },
+    {
+        "id": "f002c615595bb86f",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "57f015401cde4bbd",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 67",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "5199c7f72ae993c5",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 51",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 680,
+        "wires": [
+            [
+                "f1b38df5d7fe7611"
+            ]
+        ]
+    },
+    {
+        "id": "f1b38df5d7fe7611",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "bf1ab6899ec32362",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 68",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "d5b5849d939f1d19",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 52",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 720,
+        "wires": [
+            [
+                "a4f18879bb97d90f"
+            ]
+        ]
+    },
+    {
+        "id": "a4f18879bb97d90f",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "c9635236e0fabdf6",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 69",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "62dc2c5f6d85c504",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 53",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 760,
+        "wires": [
+            [
+                "1e5f1f91f4e5f272"
+            ]
+        ]
+    },
+    {
+        "id": "1e5f1f91f4e5f272",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "4d3b125b6fa1f2ce",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 70",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "9f71d19628e88200",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 54",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 800,
+        "wires": [
+            [
+                "e0ae5c197c405ac7"
+            ]
+        ]
+    },
+    {
+        "id": "e0ae5c197c405ac7",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "eebac8ee7ba66c07",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 71",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "79b54f11c3733bc8",
+        "type": "function",
+        "z": "51370b72a972e9de",
+        "name": "function 55",
+        "func": "msg.headers = {\n    \"content-type\": \"audio/mpeg3;audio/x-mpeg-3;video/mpeg;video/x-mpeg;text/xml\",\n    \"content-disposition\": \"attachment; filename=file.mp3\"\n}\n\nmsg.payload = msg.payload.audio.data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 840,
+        "wires": [
+            [
+                "77229757fda10f9a"
+            ]
+        ]
+    },
+    {
+        "id": "77229757fda10f9a",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "b8741e769381ce05",
+        "type": "debug",
+        "z": "51370b72a972e9de",
+        "name": "debug 72",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "298a9be2e496a0b7",
+        "type": "http response",
+        "z": "51370b72a972e9de",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 630,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "bdaccfdd066cab37",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "en-GB",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "en-GB-Wavenet-A",
+        "x": 660,
+        "y": 120,
+        "wires": [
+            [
+                "702c9d25cd25fa9d",
+                "d7c3fa50ec8d2569"
+            ]
+        ]
+    },
+    {
+        "id": "fc36cb944febc1f0",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "en-GB",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "en-GB-Wavenet-B",
+        "x": 660,
+        "y": 160,
+        "wires": [
+            [
+                "ea1806062e482b12",
+                "9a868c7f7508b1a6"
+            ]
+        ]
+    },
+    {
+        "id": "9dca19d8af44bf14",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "en-US",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "en-US-Neural2-H",
+        "x": 660,
+        "y": 200,
+        "wires": [
+            [
+                "770ebdfbbbe7e72a",
+                "16c2bf0368f669e7"
+            ]
+        ]
+    },
+    {
+        "id": "f9660662132208a9",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "en-US",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "en-US-Neural2-I",
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [
+                "6eed08032ff93e7e",
+                "5051bff393252dc0"
+            ]
+        ]
+    },
+    {
+        "id": "74097f365de4be60",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "yue-HK",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "yue-HK-Standard-A",
+        "x": 660,
+        "y": 280,
+        "wires": [
+            [
+                "ce29b97edc0260f7",
+                "1841920a2da93f2c"
+            ]
+        ]
+    },
+    {
+        "id": "14dd51b51cbaa377",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "yue-HK",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "yue-HK-Standard-B",
+        "x": 660,
+        "y": 320,
+        "wires": [
+            [
+                "9d26eabbc8270774",
+                "3119325988f4021e"
+            ]
+        ]
+    },
+    {
+        "id": "8cc255b93d2c3608",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "fr-FR",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "fr-FR-Wavenet-A",
+        "x": 660,
+        "y": 360,
+        "wires": [
+            [
+                "a7aa8755e5ff9ea0",
+                "6cd88a29d585f475"
+            ]
+        ]
+    },
+    {
+        "id": "846436b05d81dc8c",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "fr-FR",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "fr-FR-Wavenet-B",
+        "x": 660,
+        "y": 400,
+        "wires": [
+            [
+                "0f5f018d5a4c8d19",
+                "3edb81539e222730"
+            ]
+        ]
+    },
+    {
+        "id": "2039db05f9184e14",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "de-DE",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "de-DE-Standard-C",
+        "x": 660,
+        "y": 440,
+        "wires": [
+            [
+                "ed8d5f8b3308bbff",
+                "77fc744d66011670"
+            ]
+        ]
+    },
+    {
+        "id": "6fe0dd91af58e8b0",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "de-DE",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "de-DE-Standard-D",
+        "x": 660,
+        "y": 480,
+        "wires": [
+            [
+                "32ab3ea5a0541e03",
+                "1d1a83bf390dce64"
+            ]
+        ]
+    },
+    {
+        "id": "2a27c89955843775",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "ja-JP",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "ja-JP-Neural2-B",
+        "x": 660,
+        "y": 520,
+        "wires": [
+            [
+                "627a97eec27b2553",
+                "a6c5978566e02f52"
+            ]
+        ]
+    },
+    {
+        "id": "4c43049aa0ec7370",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "ja-JP",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "ja-JP-Neural2-C",
+        "x": 660,
+        "y": 560,
+        "wires": [
+            [
+                "d15b34c74e52a01f",
+                "7554e16bbb18e2e8"
+            ]
+        ]
+    },
+    {
+        "id": "92a41f9d23239062",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "pt-PT",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "pt-PT-Standard-A",
+        "x": 660,
+        "y": 600,
+        "wires": [
+            [
+                "d6b5dcb9906d833a",
+                "e821f432783ff94f"
+            ]
+        ]
+    },
+    {
+        "id": "7c76d4425dcfc496",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "pt-PT",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "pt-PT-Standard-B",
+        "x": 660,
+        "y": 640,
+        "wires": [
+            [
+                "57f015401cde4bbd",
+                "b7efc17485cc2831"
+            ]
+        ]
+    },
+    {
+        "id": "14972bca71ba5858",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "es-ES",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "es-ES-Standard-C",
+        "x": 660,
+        "y": 680,
+        "wires": [
+            [
+                "bf1ab6899ec32362",
+                "5199c7f72ae993c5"
+            ]
+        ]
+    },
+    {
+        "id": "4a565de690741ce9",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "es-ES",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "es-ES-Standard-B",
+        "x": 660,
+        "y": 720,
+        "wires": [
+            [
+                "c9635236e0fabdf6",
+                "d5b5849d939f1d19"
+            ]
+        ]
+    },
+    {
+        "id": "a5cffdac0cd48370",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "tr-TR",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "tr-TR-Standard-A",
+        "x": 660,
+        "y": 760,
+        "wires": [
+            [
+                "4d3b125b6fa1f2ce",
+                "62dc2c5f6d85c504"
+            ]
+        ]
+    },
+    {
+        "id": "43f3f11057975ab2",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "tr-TR",
+        "gender": "MALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "tr-TR-Standard-B",
+        "x": 660,
+        "y": 800,
+        "wires": [
+            [
+                "eebac8ee7ba66c07",
+                "9f71d19628e88200"
+            ]
+        ]
+    },
+    {
+        "id": "2e66054749ad037f",
+        "type": "google-cloud-text-to-speech",
+        "z": "51370b72a972e9de",
+        "account": "137baec196bbf5a1",
+        "keyFilename": "",
+        "name": "",
+        "languageCode": "uk-UA",
+        "gender": "FEMALE",
+        "encoding": "LINEAR16",
+        "rate": "1",
+        "pitch": "0",
+        "voiceName": "uk-UA-Standard-A",
+        "x": 660,
+        "y": 840,
+        "wires": [
+            [
+                "b8741e769381ce05",
+                "79b54f11c3733bc8"
+            ]
+        ]
+    }
+]
